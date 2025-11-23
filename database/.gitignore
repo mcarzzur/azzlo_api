@@ -1,1 +1,13 @@
-*.sqlite*
+/vendor
+/node_modules
+/public/storage
+/storage/*.key
+.env
+.env.backup
+.idea
+.vscode
+*.log
+Homestead.yaml
+Homestead.json
+npm-debug.log
+yarn-error.log
