@@ -9,7 +9,6 @@ Route::post('/login', [AuthController::class, 'login']);
 
 
 // Rutas protegidas por token
-//prueba de commit
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/habits', [HabitController::class, 'index']);
     Route::post('/habits', [HabitController::class, 'store']);
