@@ -11,16 +11,22 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
-        $request->validate([
+        $request->validate(
+            [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|unique:users',
-            'name_user' =>'required|string|max:255',
+            'name_user' =>'required|string|max:255|unique:users',
             'profile_picture' => 'nullable|string',
             'date_birth' => 'required|date',
             'description' => 'string|max:255',
             'password' => 'required|string|min:6',
 
-        ]);
+        ],
+        [
+            'email.unique' => 'El email ya existe',
+            'name_user.unique' => 'El nombre de usuario ya existe'
+        ]
+        );
 
         $user = User::create([
             'name' => $request->name,
